@@ -1,0 +1,46 @@
+enum class Spol{M, F}
+
+class Korisnik (
+    val nadimak: String,
+    val datumRodenja: String,
+    val spol: Spol,
+    val visina: Double,
+    val tezina: Double,
+){
+    init{
+        details()
+        BMI()
+    }
+
+
+	fun BMI() {
+        var bmi: Double
+    	var kategorija: String
+    	bmi = tezina/(visina*visina)
+    	
+        kategorija = if (bmi < 18.4){
+        	"Underweight"
+    	} else if (bmi > 24.9){
+        	"Overweight"
+    	} else {
+        	"Normal range"
+    	}
+        
+        println("BMI: " + "%.2f".format(bmi))
+        println("BMI category: " + kategorija)
+        println()
+	}
+    fun details() {
+        println("Name: " + nadimak)
+        println("Date of birth: " + datumRodenja)
+        println("Gender: " + spol)
+        println("Height: " + visina)
+        println("Weight: " + tezina)
+	}
+}
+
+fun main() {
+    val korisnik1 = Korisnik("Dado", "12.03.2003.", Spol.M, 1.8, 80.00)
+    val korisnik2 = Korisnik("Mrki", "11.11.2010.", Spol.M, 1.75, 93.00)
+    val korisnik3 = Korisnik("Kika", "05.05.2002.", Spol.F, 1.65, 50.00)
+}
